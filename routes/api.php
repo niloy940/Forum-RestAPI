@@ -22,3 +22,7 @@ Route::apiResource('/questions', 'QuestionController');
 Route::apiResource('/categories', 'CategoryController');
 
 Route::apiResource('/questions/{question}/replies', 'ReplyController');
+
+Route::post('/likes/{reply}', 'LikeController@store');
+
+Route::delete('/likes/{reply}', 'LikeController@destroy');
