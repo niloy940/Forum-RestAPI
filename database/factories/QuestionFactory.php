@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 $factory->define(Question::class, function (Faker $faker) {
     $title = $faker->sentence;
     return [
-        'title' => $title,
+        'title' => str_replace(".", "?", $title),
         'slug' => Str::slug($title, '-'),
         'body' => $faker->text,
         'category_id' => function () {
