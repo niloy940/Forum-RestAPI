@@ -13,9 +13,10 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 
 Route::apiResource('/questions', 'QuestionController');
 
@@ -26,3 +27,9 @@ Route::apiResource('/questions/{question}/replies', 'ReplyController');
 Route::post('/likes/{reply}', 'LikeController@store');
 
 Route::delete('/likes/{reply}', 'LikeController@destroy');
+
+Route::post('/login', 'AuthController@login');
+
+Route::post('/register', 'AuthController@register');
+
+Route::middleware('auth:api')->post('/logout', 'AuthController@logout');
